@@ -26,19 +26,22 @@ static char gray1[]       = "#111111";
 static char gray2[]           = "#666666";
 static char gray3[]            = "#bbbbbb";
 static char gray4[]        = "#eeeeee";
+static char green[]        = "#98c379";
 static char yellow[]        = "#d19a66";
 static char blue[]            = "#61afef";
 static char accent[]		= "#005577";
 static char *colors[][3] = {
-       /*					fg			bg			border   */
-       [SchemeNorm]		= { gray3,		gray1,		gray2 },
-       [SchemeSel]		= { gray4,		accent,		blue  },
-       [SchemeStButton]	= { blue,		gray1,		black },
-       [SchemeTagsNorm]	= { gray2,		gray1,		black },
-       [SchemeTagsOcc]	= { gray3,		gray1,		black },
-       [SchemeTagsSel]	= { gray4,		accent,		black },
-       [SchemeLtSymbol]	= { yellow,		gray1,		black },
-       [SchemeTitle]	= { gray4,		gray1,		black },
+       /*						fg			bg			border   */
+       [SchemeNorm]			= { gray3,		gray1,		gray2 },
+       [SchemeSel]			= { gray4,		accent,		blue  },
+       [SchemeScratchNorm]	= { gray3,		gray1,		gray2 },
+       [SchemeScratchSel]	= { gray4,		gray1,		green },
+       [SchemeStButton]		= { blue,		gray1,		black },
+       [SchemeTagsNorm]		= { gray2,		gray1,		black },
+       [SchemeTagsOcc]		= { gray3,		gray1,		black },
+       [SchemeTagsSel]		= { gray4,		accent,		black },
+       [SchemeLtSymbol]		= { yellow,		gray1,		black },
+       [SchemeTitle]		= { gray4,		gray1,		black },
 };
 
 
@@ -46,15 +49,17 @@ static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 
 static const unsigned int alphas[][3]      = {
-    /*               fg      bg        border*/
-    [SchemeNorm]		= { OPAQUE, baralpha, borderalpha },
-	[SchemeSel]			= { OPAQUE, baralpha, borderalpha },
-    [SchemeStButton]	= { OPAQUE, baralpha, borderalpha },
-    [SchemeTagsNorm]	= { OPAQUE, baralpha, borderalpha },
-    [SchemeTagsOcc]		= { OPAQUE, baralpha, borderalpha },
-    [SchemeTagsSel]		= { OPAQUE, baralpha, borderalpha },
-    [SchemeLtSymbol]	= { OPAQUE, baralpha, borderalpha },
-    [SchemeTitle]		= { OPAQUE, baralpha, borderalpha },
+    /*               			fg      bg        border*/
+    [SchemeNorm]			= { OPAQUE, baralpha, borderalpha },
+	[SchemeSel]				= { OPAQUE, baralpha, borderalpha },
+	[SchemeScratchNorm]		= { OPAQUE, baralpha, borderalpha },
+	[SchemeScratchSel]		= { OPAQUE, baralpha, borderalpha },
+    [SchemeStButton]		= { OPAQUE, baralpha, borderalpha },
+    [SchemeTagsNorm]		= { OPAQUE, baralpha, borderalpha },
+    [SchemeTagsOcc]			= { OPAQUE, baralpha, borderalpha },
+    [SchemeTagsSel]			= { OPAQUE, baralpha, borderalpha },
+    [SchemeLtSymbol]		= { OPAQUE, baralpha, borderalpha },
+    [SchemeTitle]			= { OPAQUE, baralpha, borderalpha },
 };
 
 /* autostart */
@@ -71,6 +76,7 @@ static const Rule rules[] = {
 	{ .class = "Lxappearance", .isfloating = 1 },
 	{ .class = "Pavucontrol", .isfloating = 1 },
 	{ .class = "firefox", .tags = 1 << 1 },
+	{ .class = "spterm", .isfloating = 1, .scratchkey = 't' },
 };
 
 /* layout(s) */
@@ -100,12 +106,19 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
+#define SCRATCHKEYS(KEY,CMD) \
+	{ MODKEY,				KEY,	togglescratch,		{.v = CMD} }, \
+	{ MODKEY|ShiftMask,		KEY,	removescratch,		{.v = CMD} }, \
+	{ MODKEY|ControlMask,	KEY,	setscratch,			{.v = CMD} },
+
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", gray1, "-nf", gray3, "-sb", accent, "-sf", gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *firefoxcmd[]	= { "firefox", NULL };
 
+
+static const char *sptermcmd[] = { "t", "alacritty", "--class", "spterm,spterm", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -138,6 +151,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Left,   viewprev,       {0} },
 	{ MODKEY|ShiftMask,             XK_Right,  tagtonext,      {0} },
 	{ MODKEY|ShiftMask,             XK_Left,   tagtoprev,      {0} },
+	SCRATCHKEYS(					XK_grave,					sptermcmd)
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
