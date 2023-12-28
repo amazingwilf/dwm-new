@@ -75,7 +75,9 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
 static const Rule rules[] = {
 	{ .class = "Lxappearance", .isfloating = 1 },
 	{ .class = "Pavucontrol", .isfloating = 1 },
-	{ .class = "firefox", .tags = 1 << 1 },
+	{ .class = "firefox", .tags = 1 << 1, .noswallow = -1 },
+	{ .class = "Alacritty", .isterminal = 1 },
+	{ .title = "Event Tester", .noswallow = 1 },
 	{ .class = "spterm", .isfloating = 1, .scratchkey = 't', .floatpos = "50% 50% 70% 80%" },
 };
 
@@ -86,6 +88,7 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 static int floatposgrid_x           = 5;        /* float grid columns */
 static int floatposgrid_y           = 5;        /* float grid rows */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
