@@ -26,12 +26,19 @@ static char gray1[]       = "#111111";
 static char gray2[]           = "#666666";
 static char gray3[]            = "#bbbbbb";
 static char gray4[]        = "#eeeeee";
+static char yellow[]        = "#d19a66";
 static char blue[]            = "#61afef";
 static char accent[]		= "#005577";
 static char *colors[][3] = {
-       /*               fg           bg           border   */
-       [SchemeNorm] = { gray3, gray1, gray2 },
-       [SchemeSel]  = { gray4, accent, blue  },
+       /*					fg			bg			border   */
+       [SchemeNorm]		= { gray3,		gray1,		gray2 },
+       [SchemeSel]		= { gray4,		accent,		blue  },
+       [SchemeStButton]	= { blue,		gray1,		black },
+       [SchemeTagsNorm]	= { gray2,		gray1,		black },
+       [SchemeTagsOcc]	= { gray3,		gray1,		black },
+       [SchemeTagsSel]	= { gray4,		accent,		black },
+       [SchemeLtSymbol]	= { yellow,		gray1,		black },
+       [SchemeTitle]	= { gray4,		gray1,		black },
 };
 
 
@@ -40,8 +47,14 @@ static const unsigned int borderalpha = OPAQUE;
 
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border*/
-    [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+    [SchemeNorm]		= { OPAQUE, baralpha, borderalpha },
+	[SchemeSel]			= { OPAQUE, baralpha, borderalpha },
+    [SchemeStButton]	= { OPAQUE, baralpha, borderalpha },
+    [SchemeTagsNorm]	= { OPAQUE, baralpha, borderalpha },
+    [SchemeTagsOcc]		= { OPAQUE, baralpha, borderalpha },
+    [SchemeTagsSel]		= { OPAQUE, baralpha, borderalpha },
+    [SchemeLtSymbol]	= { OPAQUE, baralpha, borderalpha },
+    [SchemeTitle]		= { OPAQUE, baralpha, borderalpha },
 };
 
 /* autostart */
@@ -91,11 +104,14 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", gray1, "-nf", gray3, "-sb", accent, "-sf", gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+static const char *firefoxcmd[]	= { "firefox", NULL };
+
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = firefoxcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
