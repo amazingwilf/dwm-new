@@ -3,7 +3,7 @@
 #define SESSION_FILE "/tmp/dwm-session"
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -29,11 +29,13 @@ static char gray4[]        = "#eeeeee";
 static char green[]        = "#98c379";
 static char yellow[]        = "#d19a66";
 static char blue[]            = "#61afef";
+static char pink[]            = "#c678dd";
 static char accent[]		= "#005577";
 static char *colors[][3] = {
        /*						fg			bg			border   */
        [SchemeNorm]			= { gray3,		gray1,		gray2 },
        [SchemeSel]			= { gray4,		accent,		blue  },
+       [SchemeFloat]		= { gray3,		gray1,		pink  },
        [SchemeScratchNorm]	= { gray3,		gray1,		gray2 },
        [SchemeScratchSel]	= { gray4,		gray1,		green },
        [SchemeStButton]		= { blue,		gray1,		black },
@@ -52,6 +54,7 @@ static const unsigned int alphas[][3]      = {
     /*               			fg      bg        border*/
     [SchemeNorm]			= { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]				= { OPAQUE, baralpha, borderalpha },
+	[SchemeFloat]			= { OPAQUE, baralpha, borderalpha },
 	[SchemeScratchNorm]		= { OPAQUE, baralpha, borderalpha },
 	[SchemeScratchSel]		= { OPAQUE, baralpha, borderalpha },
     [SchemeStButton]		= { OPAQUE, baralpha, borderalpha },
@@ -73,8 +76,8 @@ static const char *const autostart[] = {
 static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
 
 static const Rule rules[] = {
-	{ .class = "Lxappearance", .isfloating = 1 },
-	{ .class = "Pavucontrol", .isfloating = 1 },
+	{ .class = "Lxappearance", .isfloating = 1, .floatpos = "50% 50% -1w -1h" },
+	{ .class = "Pavucontrol", .isfloating = 1, .floatpos = "50% 50% -1w -1h" },
 	{ .class = "firefox", .tags = 1 << 1, .noswallow = -1 },
 	{ .class = "Alacritty", .isterminal = 1 },
 	{ .title = "Event Tester", .noswallow = 1 },
