@@ -36,17 +36,18 @@ static char pink[]            = "#c678dd";
 static char accent[]		= "#005577";
 static char *colors[][3] = {
        /*						fg			bg			border   */
-       [SchemeNorm]			= { gray3,		gray1,		gray2 },
-       [SchemeSel]			= { gray4,		accent,		blue  },
-       [SchemeFloat]		= { gray3,		gray1,		pink  },
-       [SchemeScratchNorm]	= { gray3,		gray1,		gray2 },
-       [SchemeScratchSel]	= { gray4,		gray1,		green },
-       [SchemeStButton]		= { blue,		gray1,		black },
-       [SchemeTagsNorm]		= { gray2,		gray1,		black },
-       [SchemeTagsOcc]		= { gray3,		gray1,		black },
-       [SchemeTagsSel]		= { gray4,		gray1,		black },
-       [SchemeLtSymbol]		= { yellow,		gray1,		black },
-       [SchemeTitle]		= { gray4,		gray1,		black },
+       [SchemeNorm]			= { gray3,		gray1,		gray2  },
+       [SchemeSel]			= { gray4,		accent,		blue   },
+       [SchemeFloat]		= { gray3,		gray1,		pink   },
+       [SchemeSticky]		= { gray3,		gray1,		yellow },
+       [SchemeScratchNorm]	= { gray3,		gray1,		gray2  },
+       [SchemeScratchSel]	= { gray4,		gray1,		green  },
+       [SchemeStButton]		= { blue,		gray1,		black  },
+       [SchemeTagsNorm]		= { gray2,		gray1,		black  },
+       [SchemeTagsOcc]		= { gray3,		gray1,		black  },
+       [SchemeTagsSel]		= { gray4,		gray1,		black  },
+       [SchemeLtSymbol]		= { yellow,		gray1,		black  },
+       [SchemeTitle]		= { gray4,		gray1,		black  },
 };
 
 
@@ -161,6 +162,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscreen, {0} },
 	{ MODKEY,                       XK_slash,  togglegaps,     {0} },
+	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
