@@ -974,6 +974,7 @@ drawbar(Monitor *m)
 	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
+	Fnt *cur;
 
 	if (!m->showbar)
 		return;
@@ -989,18 +990,26 @@ drawbar(Monitor *m)
 			urg |= c->tags;
 	}
 	x = 0;
+	cur = drw->fonts; 
+	drw->fonts = drw->fonts->next; 
 	w = TEXTW(buttonbar);
 	drw_setscheme(drw, scheme[SchemeStButton]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, buttonbar, 0);
+	drw->fonts = cur;
+
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeTagsSel : occ & 1 << i ? SchemeTagsOcc : SchemeTagsNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
 		x += w;
 	}
+
+	drw->fonts = drw->fonts->next; 
+	drw->fonts = drw->fonts->next; 
 	w = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, scheme[SchemeLtSymbol]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+	drw->fonts = cur;
 
 	if ((w = m->ww - tw - x) > bh) {
 		if (m->sel) {
@@ -1520,7 +1529,10 @@ loadxrdb()
         XRDB_LOAD_COLOR("dwm.gray2", gray2);
         XRDB_LOAD_COLOR("dwm.gray3", gray3);
         XRDB_LOAD_COLOR("dwm.gray4", gray4);
+        XRDB_LOAD_COLOR("dwm.green", green);
+        XRDB_LOAD_COLOR("dwm.yellow", yellow);
         XRDB_LOAD_COLOR("dwm.blue", blue);
+        XRDB_LOAD_COLOR("dwm.pink", pink);
         XRDB_LOAD_COLOR("dwm.accent", accent);
         XRDB_LOAD_COLOR("color0",  termcol0);
         XRDB_LOAD_COLOR("color1",  termcol1);

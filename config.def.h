@@ -12,11 +12,13 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static       int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char buttonbar[]       = "󰣇";
+static const char buttonbar[]       = "󰣇 ";
 static const int user_bh            = 28;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 #define ICONSIZE (bh - 8)   /* icon size */
 #define ICONSPACING 10 /* space between icon and title */
-static const char *fonts[]          = { "Ubuntu Nerd Font:size=14" };
+static const char *fonts[]			= { "Ubuntu:style=Light:size=14",
+										"JetBrainsMono Nerd Font:size=18",
+										"JetBrainsMono Nerd Font:style=ExtraBold:size=13" };
 static const char dmenufont[]       = "Ubuntu Nerd Font:size=14";
 
 #include "termcolors.h"
