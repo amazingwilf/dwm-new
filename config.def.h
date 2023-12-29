@@ -12,12 +12,13 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static       int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char buttonbar[]       = "󰣇 ";
+static const char buttonbar[]       = "󰣇";
 static const int user_bh            = 28;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 #define ICONSIZE (bh - 8)   /* icon size */
 #define ICONSPACING 10 /* space between icon and title */
-static const char *fonts[]			= { "Ubuntu:style=Light:size=14",
+static const char *fonts[]			= { "Clear Sans:style=Light:size=14",
 										"JetBrainsMono Nerd Font:size=18",
+										"JetBrainsMono Nerd Font:size=13",
 										"JetBrainsMono Nerd Font:style=ExtraBold:size=13" };
 static const char dmenufont[]       = "Ubuntu Nerd Font:size=14";
 
@@ -25,7 +26,7 @@ static const char dmenufont[]       = "Ubuntu Nerd Font:size=14";
 
 static char black[]           = "#000000";
 static char gray1[]       = "#111111";
-static char gray2[]           = "#666666";
+static char gray2[]           = "#414141";
 static char gray3[]            = "#bbbbbb";
 static char gray4[]        = "#eeeeee";
 static char green[]        = "#98c379";
@@ -43,7 +44,7 @@ static char *colors[][3] = {
        [SchemeStButton]		= { blue,		gray1,		black },
        [SchemeTagsNorm]		= { gray2,		gray1,		black },
        [SchemeTagsOcc]		= { gray3,		gray1,		black },
-       [SchemeTagsSel]		= { gray4,		accent,		black },
+       [SchemeTagsSel]		= { gray4,		gray1,		black },
        [SchemeLtSymbol]		= { yellow,		gray1,		black },
        [SchemeTitle]		= { gray4,		gray1,		black },
 };
@@ -75,7 +76,13 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
+/* static const char *tags[] = { "1", "2", "3", "4", "5", "6" }; */
+static const char *tags[]	= { "", "", "", "", "", "" };
+
+static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke	= 1;	/* thickness / height of the underline */
+static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
+static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 static const Rule rules[] = {
 	{ .class = "Lxappearance", .isfloating = 1, .floatpos = "50% 50% -1w -1h" },
