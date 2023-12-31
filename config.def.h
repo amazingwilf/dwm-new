@@ -13,14 +13,14 @@ static       int smartgaps          = 1;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char buttonbar[]       = "󰣇";
-static const int user_bh            = 28;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int user_bh            = 32;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 #define ICONSIZE (bh - 8)   /* icon size */
 #define ICONSPACING 10 /* space between icon and title */
-static const char *fonts[]			= { "Clear Sans:style=Light:size=14",
+static const char *fonts[]			= { "Clear Sans:style=Light:size=16",
 										"JetBrainsMono Nerd Font:size=18",
-										"JetBrainsMono Nerd Font:size=13",
+										"JetBrainsMono Nerd Font:size=15",
 										"JetBrainsMono Nerd Font:style=ExtraBold:size=13" };
-static const char dmenufont[]       = "Ubuntu Nerd Font:size=14";
+static const char dmenufont[]       = "Clear Sans:size=16";
 
 #include "termcolors.h"
 
@@ -29,10 +29,12 @@ static char gray1[]       = "#111111";
 static char gray2[]           = "#414141";
 static char gray3[]            = "#bbbbbb";
 static char gray4[]        = "#eeeeee";
+static char red[]        = "#f07178";
 static char green[]        = "#98c379";
 static char yellow[]        = "#d19a66";
 static char blue[]            = "#61afef";
 static char pink[]            = "#c678dd";
+static char cyan[]            = "#95e6cb";
 static char accent[]		= "#005577";
 static char *colors[][3] = {
        /*						fg			bg			border   */
@@ -47,7 +49,7 @@ static char *colors[][3] = {
        [SchemeTagsOcc]		= { gray3,		gray1,		black  },
        [SchemeTagsSel]		= { gray4,		gray1,		black  },
        [SchemeLtSymbol]		= { yellow,		gray1,		black  },
-       [SchemeTitle]		= { gray4,		gray1,		black  },
+       [SchemeTitle]		= { cyan,		gray1,		black  },
 };
 
 
@@ -73,6 +75,7 @@ static const unsigned int alphas[][3]      = {
 static const char *const autostart[] = {
 	"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", NULL,
 	"nitrogen", "--restore", NULL,
+	"picom", "-b", NULL,
 	NULL /* terminate */
 };
 
@@ -131,7 +134,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", gray1, "-nf", gray3, "-sb", accent, "-sf", gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-h", "32", "-fn", dmenufont, "-nb", gray1, "-nf", gray3, "-sb", accent, "-sf", gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *firefoxcmd[]	= { "firefox", NULL };
 

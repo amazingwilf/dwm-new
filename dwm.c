@@ -1552,10 +1552,12 @@ loadxrdb()
         XRDB_LOAD_COLOR("dwm.gray2", gray2);
         XRDB_LOAD_COLOR("dwm.gray3", gray3);
         XRDB_LOAD_COLOR("dwm.gray4", gray4);
+        XRDB_LOAD_COLOR("dwm.red", red);
         XRDB_LOAD_COLOR("dwm.green", green);
         XRDB_LOAD_COLOR("dwm.yellow", yellow);
         XRDB_LOAD_COLOR("dwm.blue", blue);
         XRDB_LOAD_COLOR("dwm.pink", pink);
+        XRDB_LOAD_COLOR("dwm.cyan", cyan);
         XRDB_LOAD_COLOR("dwm.accent", accent);
         XRDB_LOAD_COLOR("color0",  termcol0);
         XRDB_LOAD_COLOR("color1",  termcol1);
