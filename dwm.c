@@ -1050,8 +1050,8 @@ drawbar(Monitor *m)
 	w = TEXTW(buttonbar);
 	drw_setscheme(drw, scheme[SchemeStButton]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, buttonbar, 0);
+	drw->fonts = cur;
 
-	drw->fonts = drw->fonts->next; 
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeTagsSel : occ & 1 << i ? SchemeTagsOcc : SchemeTagsNorm]);
@@ -1061,6 +1061,8 @@ drawbar(Monitor *m)
 		x += w;
 	}
 
+	drw->fonts = drw->fonts->next; 
+	drw->fonts = drw->fonts->next; 
 	drw->fonts = drw->fonts->next; 
 	w = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, scheme[SchemeLtSymbol]);

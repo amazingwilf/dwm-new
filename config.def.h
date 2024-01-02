@@ -13,8 +13,8 @@ static       int smartgaps          = 1;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char buttonbar[]       = "󰣇";
-static const int user_bh            = 32;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-#define ICONSIZE (bh - 10)   /* icon size */
+static const int user_bh            = 36;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+#define ICONSIZE (bh - 14)   /* icon size */
 #define ICONSPACING 10 /* space between icon and title */
 static const char *fonts[]			= { "Clear Sans:style=Light:size=16",
 										"JetBrainsMono Nerd Font:size=18",
@@ -24,18 +24,20 @@ static const char dmenufont[]       = "Clear Sans:size=16";
 
 #include "termcolors.h"
 
-static char black[]           = "#000000";
-static char gray1[]       = "#111111";
-static char gray2[]           = "#414141";
-static char gray3[]            = "#bbbbbb";
-static char gray4[]        = "#eeeeee";
-static char red[]        = "#f07178";
-static char green[]        = "#98c379";
-static char yellow[]        = "#d19a66";
-static char blue[]            = "#61afef";
-static char pink[]            = "#c678dd";
-static char cyan[]            = "#95e6cb";
-static char accent[]		= "#005577";
+static char black[]		= "#000000";
+static char gray1[]		= "#111111";
+static char gray2[]		= "#414141";
+static char gray3[]		= "#bbbbbb";
+static char gray4[]		= "#eeeeee";
+static char red[]		= "#f07178";
+static char green[]		= "#98c379";
+static char yellow[]	= "#d19a66";
+static char blue[]		= "#61afef";
+static char pink[]		= "#c678dd";
+static char cyan[]		= "#95e6cb";
+static char orange[]	= "#E49263";
+static char accent[]	= "#005577";
+
 static char *colors[][3] = {
        /*						fg			bg			border   */
        [SchemeNorm]			= { gray3,		gray1,		gray2  },
@@ -51,7 +53,6 @@ static char *colors[][3] = {
        [SchemeLtSymbol]		= { yellow,		gray1,		black  },
        [SchemeTitle]		= { cyan,		gray1,		black  },
 };
-
 
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
@@ -77,13 +78,14 @@ static const char *const autostart[] = {
 	"nitrogen", "--restore", NULL,
 	"dunst", NULL,
 	"picom", "-b", NULL,
+	"mpd", NULL,
 	/* "dwmblocks", NULL, */
 	NULL /* terminate */
 };
 
 /* tagging */
-/* static const char *tags[] = { "1", "2", "3", "4", "5", "6" }; */
-static const char *tags[]	= { "", "", "", "", "", "" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8" };
+/* static const char *tags[]	= { "", "", "", "", "", "" }; */
 
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 1;	/* thickness / height of the underline */
@@ -184,6 +186,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
 	TAGKEYS(                        XK_6,                      5)
+	TAGKEYS(                        XK_7,                      6)
+	TAGKEYS(                        XK_8,                      7)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} }, 
 };
