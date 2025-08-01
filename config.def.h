@@ -10,6 +10,7 @@ static const unsigned int gappov    = 20;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int hidevacanttags		= 1;
 static const int attachmode         = 2;        /* 0 master (default), 1 = above, 2 = aside, 3 = below, 4 = bottom */
 static const char *fonts[]          = { "Iosevka Nerd Font Props:size=12",
 										"JetBrainsMono Nerd Font:style=ExtraBold:size=10" };
