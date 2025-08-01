@@ -1,0 +1,67 @@
+Xft.dpi:	192
+
+Xcursor.theme:	Bibata-Modern-Ice
+Xcursor.size:	44
+
+#define base00 #171B24
+#define base01 #1F2430
+#define base02 #242936
+#define base03 #707A8C
+#define base04 #8A9199
+#define base05 #CCCAC2
+#define base06 #D9D7CE
+#define base07 #F3F4F5
+#define base08 #F28779
+#define base09 #FFAD66
+#define base0A #FFD173
+#define base0B #D5FF80
+#define base0C #95E6CB
+#define base0D #5CCFE6
+#define base0E #D4BFFF
+#define base0F #000090
+
+*foreground:			base05
+*background:			base00
+
+*color0:				base01
+*color1:				base08
+*color2:				base0B
+*color3:				base0A
+*color4:				base0D
+*color5:				base0E
+*color6:				base0C
+*color7:				base05
+
+*color8:				base04
+*color9:				base09
+*color10:				base0B
+*color11:				base0A
+*color12:				base0D
+*color13:				base0E
+*color14:				base0C
+*color15:				base07
+
+dwm.normfgcolor:		base05
+dwm.normbgcolor:		base00
+dwm.normbordercolor:	base02
+dwm.normfloatcolor:		base02
+
+dwm.selfgcolor:			base07
+dwm.selbgcolor:			base0F
+dwm.selbordercolor:		base0D
+dwm.selfloatcolor:		base0C
+
+dwm.scratchnormbordercolor:		base03
+dwm.scratchnormfloatcolor:		base03
+dwm.scratchselbordercolor:		base0A
+dwm.scratchselfloatcolor:		base0A
+
+dwm.tagsemptyfgcolor:			base02
+dwm.tagsemptybgcolor:			base00
+dwm.tagsoccfgcolor:				base0C
+dwm.tagsoccbgcolor:				base00
+dwm.tagsselfgcolor:				base07
+dwm.tagsselbgcolor:				base0F
+
+dwm.ltsymbolfgcolor:			base0A
+dwm.ltsymbolbgcolor:			base00
