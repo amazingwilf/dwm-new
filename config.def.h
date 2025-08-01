@@ -3,6 +3,9 @@
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static int floatposgrid_x           = 5;        /* float grid columns */
+static int floatposgrid_y           = 5;        /* float grid rows */
+static const char *toggle_float_pos = "50% 50% 80% 80%"; // default floating position when triggering togglefloating
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 20;       /* horiz outer gap between windows and screen edge */
@@ -11,6 +14,8 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int hidevacanttags		= 1;
+#define ICONSIZE (bh - 12)   /* icon size */
+#define ICONSPACING 10 /* space between icon and title */
 static const int attachmode         = 2;        /* 0 master (default), 1 = above, 2 = aside, 3 = below, 4 = bottom */
 static const char *fonts[]          = { "Iosevka Nerd Font Props:size=12",
 										"JetBrainsMono Nerd Font:style=ExtraBold:size=10" };
@@ -21,21 +26,23 @@ static const char dmenufont[]       = "Iosevka Nerd Font Propo:size=12";
 static char normfgcolor[]           = "#bbbbbb";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
+static char normfloatcolor[]       = "#444444";
 static char selfgcolor[]            = "#eeeeee";
 static char selbgcolor[]            = "#005577";
 static char selbordercolor[]        = "#005577";
-static char *colors[][3] = {
+static char selfloatcolor[]        = "#005577";
+static char *colors[][4] = {
        /*               fg           bg           border   */
-       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor, normfloatcolor },
+       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor,  selfloatcolor },
 };
 
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
-static const unsigned int alphas[][3]      = {
+static const unsigned int alphas[][4]      = {
     /*               fg      bg        border*/
-    [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+    [SchemeNorm] = { OPAQUE, baralpha, borderalpha, borderalpha },
+	[SchemeSel]  = { OPAQUE, baralpha, borderalpha, borderalpha },
 };
 
 static const char *const autostart[] = {
