@@ -122,10 +122,10 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY,							KEY,	view,			{.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask,				KEY,	toggleview,		{.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,					KEY,	tag,			{.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask|ShiftMask,		KEY,	toggletag,		{.ui = 1 << TAG} },
 
 #define SCRATCHKEYS(KEY,CMD) \
 	{ MODKEY,				KEY,		togglescratch,		{.v = CMD} }, \
@@ -138,10 +138,18 @@ static const Layout layouts[] = {
 #define STATUSBAR "dwmblocks"
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-p", "Run: ", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[]	= { "dmenu_run", "-p", "Run: ", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *roficmd[]	= { "rofi", "-show", "drun", NULL };
-static const char *termcmd[]  = { "ghostty", NULL };
+static const char *termcmd[]	= { "ghostty", NULL };
 static const char *firefoxcmd[]	= { "firefox", NULL };
+
+static const char *volmutecmd[]	= { "volume", "--toggle", NULL };
+static const char *voldowncmd[]	= { "volume", "--dec", NULL };
+static const char *volupcmd[]	= { "volume", "--inc", NULL };
+static const char *micmutecmd[]	= { "volume", "--toggle-mic", NULL };
+static const char *bldowncmd[]	= { "brightness", "--dec", NULL };
+static const char *blupcmd[]	= { "brightness", "--inc", NULL };
+
 
 static const char *sptermcmd[]	= { "t", "ghostty", "--x11-instance-name=spterm", "--title=Scratchpad", NULL };
 
@@ -151,6 +159,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_space,  spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = firefoxcmd } },
+	{ 0,                            XK_F1,     spawn,          {.v = volmutecmd } },
+	{ 0,                            XK_F2,     spawn,          {.v = voldowncmd } },
+	{ 0,                            XK_F3,     spawn,          {.v = volupcmd } },
+	{ 0,                            XK_F4,     spawn,          {.v = micmutecmd } },
+	{ 0,                            XK_F5,     spawn,          {.v = bldowncmd } },
+	{ 0,                            XK_F6,     spawn,          {.v = blupcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -163,7 +177,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
 	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
 	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
-	{ MODKEY|ShiftMask,             XK_0,      togglegaps,     {0} },
+	{ MODKEY|ShiftMask,             XK_g,      togglegaps,     {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
